@@ -6,10 +6,11 @@ extern "C" {
 #endif
 
 #include "axp192.h"
+
 #include <esp_err.h>
 
 
-esp_err_t m5core2_init(axp192_t *axp_);
+esp_err_t m5core2_init();
 esp_err_t m5core2_int_5v(bool on);
 esp_err_t m5core2_led(bool on);
 esp_err_t m5core2_vibration(bool on);
