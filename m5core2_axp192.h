@@ -9,7 +9,6 @@ extern "C" {
 
 #include <esp_err.h>
 
-
 esp_err_t m5core2_init();
 esp_err_t m5core2_int_5v(bool on);
 esp_err_t m5core2_led(bool on);

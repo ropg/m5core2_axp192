@@ -1,0 +1,23 @@
+menu "M5Core2 AXP192 Settings"
+
+    choice
+        prompt "ESP I2C port for M5Core internal bus"
+        default M5CORE2_I2C_INTERNAL_0
+
+        config M5CORE2_I2C_INTERNAL_0
+            bool
+            prompt "Port 0"
+
+        config M5CORE2_I2C_INTERNAL_1
+            bool
+            prompt "Port 1"
+
+    endchoice
+
+    config M5CORE2_I2C_INTERNAL
+        int
+        default 1 if M5CORE2_I2C_INTERNAL_1
+        default 0
+    
+endmenu
+

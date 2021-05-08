@@ -12,7 +12,7 @@
 #include <esp_log.h>
 
 
-#define AXP_I2C	i2c_hal(0)
+#define AXP_I2C	i2c_hal(CONFIG_M5CORE2_I2C_INTERNAL)
 
 static const char* TAG = "m5core2_axp192";
 

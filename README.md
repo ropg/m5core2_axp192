@@ -30,7 +30,7 @@ I (476) m5core2_axp192: 	USB / battery powered
 I (576) m5core2_axp192: 	LCD and touch reset
 ```
 
-This component presently implements the following functions:
+Presently the following functions are implemented:
 
 ```c
 esp_err_t m5core2_init();
@@ -40,4 +40,4 @@ esp_err_t m5core2_vibration(bool on);
 esp_err_t m5core2_speaker(bool on);
 ```
 
-This component depends on [`axp192`](https://github.com/ropg/axp192) (my modified version)  and [`i2c_manager`](https://github.com/ropg/i2c_manager). I2C port 0 needs to be set up to the internal I2C port of the M5Core2. To see this component in action, simply follow the instructions at this build-ready [demo application](https://github.com/ropg/m5core2_esp-idf_demo).
+This component depends on [`axp192`](https://github.com/ropg/axp192) (my modified version)  and [`i2c_manager`](https://github.com/ropg/i2c_manager). The only menuconfig setting is to say which ESP32 I2C port is used for the internal I2C bus of the M5Core2. To see this component in action, simply follow the instructions at this build-ready [demo application](https://github.com/ropg/m5core2_esp-idf_demo).
