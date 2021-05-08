@@ -48,7 +48,7 @@ esp_err_t m5core2_init() {
 
     if (axp192_set_rail_millivolts(AXP_I2C, AXP192_RAIL_LDO2, 3300) == ESP_OK &&
         axp192_set_rail_state(AXP_I2C, AXP192_RAIL_LDO2, true) == ESP_OK) {
-        ESP_LOGI(TAG, "\tLCD logic and sdcard voltage preset to 3.3v");
+        ESP_LOGI(TAG, "\tLCD logic and sdcard voltage set to 3.3v");
     }
 
     if (axp192_set_rail_millivolts(AXP_I2C, AXP192_RAIL_LDO3, 2000) == ESP_OK) {
@@ -81,6 +81,7 @@ esp_err_t m5core2_init() {
     	ESP_LOGI(TAG, "\tUSB / battery powered");
     }
 	
+	// GPIO4 is reset for LCD and touch
 	axp192_bits(AXP_I2C, AXP192_GPIO40_FUNCTION_CONTROL, ~0x72, 0x84);
     axp192_bits(AXP_I2C, AXP192_GPIO40_SIGNAL_STATUS, 0x02, 0x00);
     vTaskDelay(100 / portTICK_RATE_MS);
@@ -106,12 +107,12 @@ esp_err_t m5core2_int_5v(bool on) {
 	esp_err_t ret = ESP_OK;
 
 	if (on) {
-		ret |= axp192_write_reg(AXP_I2C, AXP192_GPIO0_LDOIO0_VOLTAGE, 0xf0);
-		ret |= axp192_write_reg(AXP_I2C, AXP192_GPIO0_CONTROL, (0x02));
+		ret |= axp192_bits(AXP_I2C, AXP192_GPIO0_LDOIO0_VOLTAGE, 0x00, 0xf0);
+		ret |= axp192_bits(AXP_I2C, AXP192_GPIO0_CONTROL, 0x07, 0x02);
 		ret |= axp192_set_rail_state(AXP_I2C, AXP192_RAIL_EXTEN, true);
 	} else {
 		ret |= axp192_set_rail_state(AXP_I2C, AXP192_RAIL_EXTEN, false);
-		ret |= axp192_write_reg(AXP_I2C, AXP192_GPIO0_CONTROL, (0x07));
+		ret |= axp192_bits(AXP_I2C, AXP192_GPIO0_CONTROL, 0x07, 0x01);
 	}
 	return ret;
 }
