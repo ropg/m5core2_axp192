@@ -48,4 +48,4 @@ esp_err_t m5core2_get_rail_mv(axp192_rail_t rail, uint16_t *millivolts);
 esp_err_t m5core2_set_rail_mv(axp192_rail_t rail, uint16_t millivolts);
 ```
 
-This component depends on Mika Tuupola's [`axp192`](https://github.com/tuupola/axp192) and [`i2c_manager`](https://github.com/ropg/i2c_manager). The only menuconfig setting is to say which ESP32 I2C port is used for the internal I2C bus of the M5Core2. To see this component in action, simply follow the instructions at this build-ready [demo application](https://github.com/ropg/m5core2_esp-idf_demo).
+This component depends on Mika Tuupola's [`axp192`](https://github.com/tuupola/axp192) and my own [`i2c_manager`](https://github.com/ropg/i2c_manager). The only menuconfig setting is to say which ESP32 I2C port is used for the internal I2C bus of the M5Core2. To see this component in action, simply follow the instructions at this build-ready [demo application](https://github.com/ropg/m5core2_esp-idf_demo).
